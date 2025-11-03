@@ -1,9 +1,9 @@
 <?php
 class Database {
-    private $host = "localhost";
-    private $db_name = "web_m1_s1";
+    private $host = "127.0.0.1";
+    private $db_name = "db_gwenole";
     private $username = "root";
-    private $password = "password";
+    private $password = "mdp";
     public $conn;
 
     public function getConnection() {
