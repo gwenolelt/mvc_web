@@ -1,4 +1,4 @@
-login PHPadmin : root 
-mdp PHP admin : password
+Il faut aller dans config/database.php pour changer les configurations de connexion à la base pour mettre ses identifiants.
 
-Nom_BDD web_m1_s1
+Commande pour lancer le serveur :
+php -S localhost:8000
