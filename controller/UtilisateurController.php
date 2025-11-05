@@ -15,6 +15,7 @@ class UtilisateurController {
         $utilisateurs = $this->model->lireTous();
         include __DIR__ . '/../view/utilisateur_liste.php';
     }
+    
 
     public function create() {
         $erreur = ''; // Pour stocker les messages d'erreur

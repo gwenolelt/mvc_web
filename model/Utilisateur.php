@@ -62,6 +62,14 @@ class Utilisateur {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Récupère un utilisateur par son login
+    public function getUser($login) {
+        $query = "SELECT * FROM " . $this->table . " WHERE uti_login = ? LIMIT 0,1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$login]);
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
     // Vérifie si le login existe déjà (au moment de la création)
     public function loginExiste($login) {
         $query = "SELECT COUNT(*) FROM t_utilisateur_uti WHERE uti_login = ?";
