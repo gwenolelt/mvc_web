@@ -70,6 +70,13 @@ class Utilisateur {
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    // Met a jour la date de dernière connexion
+    public function updateLastConnection($idutilisateur) {
+        $query = "UPDATE " . $this->table . " SET uti_date_connexion = NOW() WHERE uti_idutilisateur = ?";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute([$idutilisateur]);
+    }
+
     // Vérifie si le login existe déjà (au moment de la création)
     public function loginExiste($login) {
         $query = "SELECT COUNT(*) FROM t_utilisateur_uti WHERE uti_login = ?";

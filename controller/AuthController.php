@@ -19,6 +19,7 @@ class AuthController {
             
             if ($user && password_verify($password, $user->uti_mdp)) {
                 $_SESSION['user'] = $user;
+                $utilisateurModel->updateLastConnection($user->uti_idutilisateur);
                 header("Location: index.php");
                 exit;
             } else {
