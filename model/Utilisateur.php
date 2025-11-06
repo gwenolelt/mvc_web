@@ -30,7 +30,12 @@ class Utilisateur {
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":login", $this->uti_login);
         $stmt->bindParam(":mdp", $this->uti_mdp);
-        $stmt->bindParam(":idcompte", $this->uti_idcompte);
+        $query_idcompte = "SELECT MAX(uti_idcompte) as max_id FROM " . $this->table;
+            $stmt_idcompte = $this->conn->prepare($query_idcompte);
+            $stmt_idcompte->execute();
+            $result = $stmt_idcompte->fetch(PDO::FETCH_ASSOC);
+            $idcompte = ($result['max_id'] ?? 0) + 1;
+            $stmt->bindParam(":idcompte", $idcompte);
         $stmt->bindParam(":mail", $this->uti_mail);
         return $stmt->execute();
     }
